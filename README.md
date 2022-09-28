@@ -21,3 +21,7 @@ All data used in the analysis are publicly available. The main gene expression m
 To compare the cancer gene expressions with their expressions in normal tissues, we downloaded the normal tissue data for all human organs from [The Genotype-Tissue Expression (GTEx) project.](https://gtexportal.org/home/)
 
 The most convenient and combined form of both the cancer and the normal expression data is available in a processed and ready-to-use format from the [UCSC Xena Browser.](https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_RSEM_Hugo_norm_count&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443)
+
+The above matrix is about 7.8 GB in size and has 58000 rows (genes) and 20000 columns (patient samples). The matrix also has samples from a pediatric cancer dataset called [TARGET](https://ocg.cancer.gov/programs/target). This TARGET set of pediatric patients is out of the scope of this analysis, and hence, we exclude those columns. For our analysis here, we retain only the GTEx normal samples and TCGA adult cancer samples.
+
+
