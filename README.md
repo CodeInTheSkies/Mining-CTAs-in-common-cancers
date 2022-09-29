@@ -18,10 +18,23 @@ Due to the COVID pandemic, there is a lot more awareness and understanding of ho
 ### The data
 All data used in the analysis are publicly available. The main gene expression matrix for the cancers along with relevant clinical data was obtained from [The Cancer Genome Atlas (TCGA)](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga), which is a very useful large-scale consortium effort that has a rich set of data across 33 cancers gathered systematically from 11000 patient samples. 
 
-To compare the cancer gene expressions with their expressions in normal tissues, the normal human organ and tissues data from [The Genotype-Tissue Expression (GTEx) project.](https://gtexportal.org/home/) was downloaded.
+To compare the cancer gene expressions with their expressions in normal tissues, the normal human organ and tissues data from [The Genotype-Tissue Expression (GTEx) project](https://gtexportal.org/home/) was downloaded.
 
 Instead of downloading separately from the individual sources, a combined and convenient matrix format containing both the TCGA cancer and the GTEx normal expression data is available from the [UCSC Xena Browser.](https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_RSEM_Hugo_norm_count&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443) This source also has the additional advantage that the cancer and the normal expression matrices have been reprocessed to normalize for batch effects. In other words, both the cancer and normal expressions have been integrated in an organized fashion, ready to be analyzed together.
 
 The above matrix from Xena is about 7.8 GB in size and has 58581 rows (genes) and 19121 columns (patient samples). The matrix also has samples from a pediatric cancer dataset called [TARGET](https://ocg.cancer.gov/programs/target). This TARGET set of pediatric patients is out of the scope of this analysis, and hence, we exclude those columns. For our analysis here, we retain only the GTEx normal samples and TCGA adult cancer samples (18316 columns in total).
 
 
+The full list of CTAs chosen for analysis, a TCGA cancer name abbreviations lookup table, and some phenotype data needed for the analysis have been uploaded in [smalldata](/smalldata).
+
+For the TMB data, a single file containing TMB values for all cancer samples from TCGA could not be found for download. Instead, TMB values were downloadable as individual files for each cancer. These were downloaded, one for each cancer, and then read one by one to populate a new TMB clinical data column.
+
+All clinical data downloads were from this [cBioportal page.](https://www.cbioportal.org/datasets)
+
+From the above link, search for "pancan". All cancers available will be listed, and the links for each cancer will lead to its corresponding data.
+
+For example, for lung cancer, the particular link would be:
+[https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018](https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018)
+
+From this main lung cancer link, choose the "clinical data" sub-tab and then choose "TMB(nonsynomymous)" and "Tumor Type" columns only. Deselect all else. Then download using the "down arrow" button below the "custom selection" button near the left of the bottom search bar (it should look like a cloud). This
+will download a tsv table as a separate, small-size text file with a few relevant clinical columns.
