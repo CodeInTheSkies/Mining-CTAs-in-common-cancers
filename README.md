@@ -46,4 +46,10 @@ The code here also supports subgrouping for certain cancers such as breast cance
 The code is written such that we can analyze multiple cancers in a single run by specifying a list of abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
 
 ### Results
-We now describe some sample results, interpretations, and follow-up analyses. Full-sized PDF files for a number of cancers analyzed thus far are available in [plots](/plots).
+We now describe some sample results, interpretations, and follow-up analyses. A large multipage PDF file containing full-sized heatmaps for a number of cancers analyzed thus far are available for download in [plots](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf).
+
+Here is a sample heatmap section that has the top few and the bottom few CTAs for breast cancer, with patient samples grouped by subtypes and low, mid, and high TMB groups.
+
+![Top few and bottom few CTAs for Brest Cancer (with subtypes)](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Short.png)
+
+A description of the elements of the plot is as follows.  
