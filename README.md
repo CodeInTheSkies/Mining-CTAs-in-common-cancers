@@ -61,6 +61,6 @@ Here is the full-sized heatmap for Breast Cancer that has all CTAs analyzed. Thi
 ![Fullsized plot](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Full.png)
 
 #### Full-sized heatmaps for many other cancers
-A [large multipage PDF file](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf) containing full-sized heatmaps for a number of cancers analyzed thus far is available for download in [plots](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf).
+A [large multipage PDF file](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf) containing full-sized heatmaps for a number of cancers analyzed thus far is available for download in [plots](/plots).
 
 ### Follow-up analyses
