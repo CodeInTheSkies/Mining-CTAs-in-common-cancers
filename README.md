@@ -71,7 +71,7 @@ Towards this objective, we intersected the top 50 or so CTAs chosen using the he
 - Set 2 (6 cancers): Bladder, Breast, Liver Lung, Colon, and Ovarian cancers
 
 We used two online resources for quickly obtaining Venn diagrams from sets of strings:
-- [https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl](https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl)
+- [https://bioinformatics.psb.ugent.be/webtools/Venn/](https://bioinformatics.psb.ugent.be/webtools/Venn/)
 - [https://molbiotools.com/listcompare.php](https://molbiotools.com/listcompare.php)
 
 to obtain the following two Venn diagrams:
