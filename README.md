@@ -40,14 +40,8 @@ From this main lung cancer link, choose the "clinical data" sub-tab and then cho
 will download a tsv table as a separate, small-size text file with a few relevant clinical columns.
 
 ### The analysis
-The analysis involves significant data wrangling to systematically clean and match clinical data for each patient sample, and then bin the cancer samples according to predefined normal and cancer groups including groups based on TMB ranges. Z-scoring for the heatmaps are done for the whole final matrix (just before plotting the heatmap), instead of the usual practice of row-wise z-scoring. Full-matrix z-scoring is advantageous in bringing the most interesting CTAs to the top based on their absolute expression values. Cancer and normal expressions can be compared s in a
-given heatmap).
+The analysis involves a number of data wrangling steps to clean the data and systematically match clinical data for each patient sample. Then the normal and cancer samples need to be binned into predefined groups including groups based on TMB ranges. For the final heatmaps, z-scores for the whole matrix need to be computed (just before plotting the heatmap). Instead of the usual practice of row-wise z-scoring, it was decided that computing z-scores for the entire matrix is a better method for this analysis as then the relative expression levels would have a global scale. This would be advantageous in bringing the most interesting CTAs to the top based on their expression values relative to the whole set in the matrix. Cancer and normal expressions can be fairly compared within the same heatmap).
 
-For certain cancers, we may need to do things a bit differently, as for some
-cancers such as breast, we may need to further divide the patients into
-subgroups (breast cancer subtypes). So, we use clinical data accordingly to
-divide into subgroups as needed, depending on the type of cancer being
-analyzed.
+The code here also supports subgrouping for certain cancers such as breast cancer where it would be beneficial to divide the cancer samples into breast cancer subtypes. We use clinical data columns that have subtype information accordingly to divide into subgroups as needed depending on the type of cancer being analyzed.
 
-This code is designed such that we can do multiple cancers all in one go,
-using minor modifications.
+The code is written such that we can do multiple cancers all in one run using minor modifications (see comments in the code for further details).
