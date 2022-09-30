@@ -50,6 +50,10 @@ We now describe some sample results, interpretations, and follow-up analyses. A 
 
 Here is a sample heatmap section that has the top few and the bottom few CTAs for breast cancer, with patient samples grouped by subtypes and low, mid, and high TMB groups.
 
-![Top few and bottom few CTAs for Brest Cancer (with subtypes)](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Short.png)
+#### Top few and bottom few CTAs for Breast Cancer (with subtypes)
+![Top few and bottom few CTAs for Breast Cancer (with subtypes)](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Short.png)
 
-A description of the elements of the plot is as follows.  
+A description of the elements of the plot is as follows. The heatmap has 4 main sections. The central section is the main heatmap with rows corresponding to the CTAs (genes) and columns corresponding to patient groups (normal tissues and cancer subgroups). The normal and the cancer sets are separated by a thin white space. The bottom annotation is a column-wise bar plot with each bar representing the "cohort size" or the number of patients in each group. To the right, there are two special row annotations consisting of box and whisker plots. For each gene (or CTA), these boxplots represent that gene's average expression level (log2 scale, log2(normCount+1)) within the normal cohort excluding testis (left) and the cancer cohort (right), respectively. The center line in the boxes represents the median. The testis samples are excluded from the boxplot cohort because high expression of CTAs in the testis is well known by definition, and so testis expression can be excluded to prevent unnecessary skewing of the median line towards high expression.
+
+#### Full-sized heatmap for Breast Cancer (all CTAs)
+![Fullsized plot](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Full.png)
