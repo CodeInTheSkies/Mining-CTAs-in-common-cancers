@@ -35,8 +35,7 @@ From the above link, search for "pancan" ([The Pan-Cancer Atlas](https://gdc.can
 
 For example, for lung cancer, the particular link would be:
 [https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018](https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018)
-From this main lung cancer page, choose the "clinical data" sub-tab and then choose "TMB(nonsynomymous)" and "Tumor Type" columns. All else can be deselected. Then download using the "down arrow" button below the "custom selection" button near the left of the bottom search bar (it should look like a cloud). This
-will download a tsv table as a separate, small-size text file with a few relevant clinical columns.
+From this main lung cancer page, choose the "clinical data" sub-tab and then choose "TMB(nonsynomymous)" and "Tumor Type" columns. All else can be deselected. Then download using the "down arrow" button below the "custom selection" button near the left of the bottom search bar (it should look like a cloud). This will download a tsv table as a separate, small-size text file with a few relevant clinical columns.
 
 ### The analysis
 The analysis involves a number of data wrangling steps to clean the data and systematically match clinical data for each patient sample. Then the normal and cancer samples are binned into predefined groups including groups based on TMB ranges. For the final heatmaps (one per cancer), z-scores for the whole matrix need to be computed (just before plotting the heatmaps). Instead of the usual practice of row-wise z-scoring for gene-expression heatmaps, it was decided that computing z-scores for the entire matrix is a better method for this analysis as then the relative expression levels would have a global scale. This would be advantageous for bringing the most interesting CTAs to the top based on their expression values relative to the full set of CTAs in the matrix. Cancer and normal expressions can be fairly compared within a single heatmap if the z-scores are computed for the whole matrix.
@@ -46,10 +45,42 @@ The code here also supports subgrouping for certain cancers such as breast cance
 The code is written such that we can analyze multiple cancers in a single run by specifying a list of abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
 
 ### Results
-We now describe some sample results, interpretations, and follow-up analyses. A large multipage PDF file containing full-sized heatmaps for a number of cancers analyzed thus far are available for download in [plots](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf).
+We now describe some sample results, interpretations, and follow-up analyses. 
 
 Here is a sample heatmap section that has the top few and the bottom few CTAs for breast cancer, with patient samples grouped by subtypes and low, mid, and high TMB groups.
 
-![Top few and bottom few CTAs for Brest Cancer (with subtypes)](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Short.png)
+#### Top few and bottom few CTAs for Breast Cancer (with subtypes)
+![Top few and bottom few CTAs for Breast Cancer (with subtypes)](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Short.png)
 
-A description of the elements of the plot is as follows.  
+A description of the elements of the plot is as follows. The heatmap has 4 main sections. The central section is the main heatmap with rows corresponding to the CTAs (genes) and columns corresponding to patient groups (normal tissues and cancer subgroups). The normal and the cancer portions are separated by a thin white vertical space. The bottom annotation is a column-wise bar plot with each bar representing the "cohort size" or the number of patients in each group. To the right, there are two special row annotations consisting of box and whisker plots. For each gene (or CTA), these boxplots represent that gene's average expression level (log2 scale, log2(normCount+1)) within the normal cohort excluding testis (left) and the cancer cohort (right), respectively. The center line in the boxes represents the median. The testis samples are excluded from the boxplot cohort because a high expression of CTAs in the testis is well known by definition, and so testis expression can be excluded to prevent unnecessary skewing of the median line towards high expression.
+
+The vertical order of the CTAs is decided by the difference between the median value of the cancer boxplot and the median value of the normal boxplot. The heatmap is sorted in descending order of this difference from top to bottom. In other words, the heatmap is vertically sorted such that CTAs that have the maximum difference between the cancer median and the normal median would appear at the top.
+
+#### Full-sized heatmap for Breast Cancer (all CTAs)
+Here is the full-sized heatmap for Breast Cancer that has all CTAs analyzed. This is the full version of the above shortened heatmap.
+![Fullsized plot](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Full.png)
+
+#### Full-sized heatmaps for many other cancers
+A [large multipage PDF file](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf) containing full-sized heatmaps for a number of cancers analyzed thus far is available for download in [plots](/plots).
+
+### Follow-up analyses towards the larger goal
+The main goal of this project is to mine for top CTAs for each cancer of interest that is most expressed in the cancer while, at the same time, least expressed in normal tissues. Ultimately, aside from the individual cancers, if there are a _common set of CTAs_ that are well-expressed across multiple cancers but are not much expressed in normal tissues, then this subset of CTAs would be very good candidates for the larger goal of immunotherapy research.
+
+Towards this objective, we intersected the top 50 or so CTAs chosen using the heatmaps across two sets of cancers of interest, namely,
+- Set 1 (3 cancers): Acute Myeloid Leukemia (AML), Myeloma, and Diffuse Large B-cell Lymphoma (DLBCL)
+- Set 2 (6 cancers): Bladder, Breast, Liver Lung, Colon, and Ovarian cancers
+
+We used two online resources for quickly obtaining Venn diagrams from sets of strings:
+- [https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl](https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl)
+- [https://molbiotools.com/listcompare.php](https://molbiotools.com/listcompare.php)
+
+to obtain the following two Venn diagrams:
+#### Venn diagram for Set 1
+![Set1](/plots/VennDiagram_Set1_cancers.png)
+
+#### Venn diagram for Set 2
+![Set2](/plots/VennDiagram_Set2_cancers.png)
+
+
+
+
