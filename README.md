@@ -29,19 +29,18 @@ The full list of CTAs chosen for analysis, a TCGA cancer name abbreviations look
 
 For the TMB data, a single file containing TMB values for all cancer samples from TCGA could not be found for download. Instead, TMB values were downloadable as individual files for each cancer. These were downloaded, one per cancer, and then read one by one to populate a new TMB clinical data column.
 
-All clinical data downloads, including the TMB values for individual cancers, were from this [cBioportal page.](https://www.cbioportal.org/datasets)
+All clinical data, including the TMB values for individual cancers, were downloaded from this [cBioportal page.](https://www.cbioportal.org/datasets)
 
 From the above link, search for "pancan" ([The Pan-Cancer Atlas](https://gdc.cancer.gov/about-data/publications/pancanatlas)). All cancers available will be listed, and the links for each cancer will lead to its corresponding data.
 
 For example, for lung cancer, the particular link would be:
 [https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018](https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018)
-
-From this main lung cancer link, choose the "clinical data" sub-tab and then choose "TMB(nonsynomymous)" and "Tumor Type" columns. All else can be deselected. Then download using the "down arrow" button below the "custom selection" button near the left of the bottom search bar (it should look like a cloud). This
+From this main lung cancer page, choose the "clinical data" sub-tab and then choose "TMB(nonsynomymous)" and "Tumor Type" columns. All else can be deselected. Then download using the "down arrow" button below the "custom selection" button near the left of the bottom search bar (it should look like a cloud). This
 will download a tsv table as a separate, small-size text file with a few relevant clinical columns.
 
 ### The analysis
-The analysis involves a number of data wrangling steps to clean the data and systematically match clinical data for each patient sample. Then the normal and cancer samples are binned into predefined groups including groups based on TMB ranges. For the final heatmaps, z-scores for the whole matrix need to be computed (just before plotting the heatmap). Instead of the usual practice of row-wise z-scoring, it was decided that computing z-scores for the entire matrix is a better method for this analysis as then the relative expression levels would have a global scale. This would be advantageous for bringing the most interesting CTAs to the top based on their expression values relative to the whole set of CTAs in the matrix. Cancer and normal expressions can be fairly compared within a single heatmap.
+The analysis involves a number of data wrangling steps to clean the data and systematically match clinical data for each patient sample. Then the normal and cancer samples are binned into predefined groups including groups based on TMB ranges. For the final heatmaps (one per cancer), z-scores for the whole matrix need to be computed (just before plotting the heatmaps). Instead of the usual practice of row-wise z-scoring for gene-expression heatmaps, it was decided that computing z-scores for the entire matrix is a better method for this analysis as then the relative expression levels would have a global scale. This would be advantageous for bringing the most interesting CTAs to the top based on their expression values relative to the full set of CTAs in the matrix. Cancer and normal expressions can be fairly compared within a single heatmap if the z-scores are computed for the whole matrix.
 
-The code here also supports subgrouping for certain cancers such as breast cancer where it would be beneficial to divide the cancer samples into breast cancer subtypes. We use clinical data columns that have subtype information accordingly to divide into subgroups as needed depending on the type of cancer being analyzed.
+The code here also supports subgrouping for certain cancers such as breast cancer, where it would be beneficial to divide the cancer samples into breast cancer subtypes. To achieve subgrouping, we use clinical data columns that have subtype information as needed depending on the type of cancer being analyzed.
 
-The code is written such that we can do multiple cancers all in one run using minor modifications (see comments in the code for further details).
+The code is written such that we can analyze multiple cancers in a single run by specifying a list of 4-letter abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
