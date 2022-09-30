@@ -63,4 +63,24 @@ Here is the full-sized heatmap for Breast Cancer that has all CTAs analyzed. Thi
 #### Full-sized heatmaps for many other cancers
 A [large multipage PDF file](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf) containing full-sized heatmaps for a number of cancers analyzed thus far is available for download in [plots](/plots).
 
-### Follow-up analyses
+### Follow-up analyses towards the larger goal
+The main goal of this project is to mine for top CTAs for each cancer of interest that is most expressed in the cancer while, at the same time, least expressed in normal tissues. Ultimately, aside from the individual cancers, if there are a _common set of CTAs_ that are well-expressed across multiple cancers but are not much expressed in normal tissues, then this subset of CTAs would be very good candidates for the larger goal of immunotherapy research.
+
+Towards this objective, we intersected the top 50 or so CTAs chosen using the heatmaps across two sets of cancers of interest, namely,
+- Set 1 (3 cancers): Acute Myeloid Leukemia (AML), Myeloma, and Diffuse Large B-cell Lymphoma (DLBCL)
+- Set 2 (6 cancers): Bladder, Breast, Liver Lung, Colon, and Ovarian cancers
+
+We used two online resources for quickly obtaining Venn diagrams from sets of strings:
+- [https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl](https://bioinformatics.psb.ugent.be/cgi-bin/liste/Venn/calculate_venn.htpl)
+- [https://molbiotools.com/listcompare.php](https://molbiotools.com/listcompare.php)
+
+to obtain the following two Venn diagrams:
+#### Venn diagram for Set 1
+![Set1](/plots/VennDiagram_Set1_cancers.png)
+
+#### Venn diagram for Set 2
+![Set2](/plots/VennDiagram_Set2_cancers.png)
+
+
+
+
