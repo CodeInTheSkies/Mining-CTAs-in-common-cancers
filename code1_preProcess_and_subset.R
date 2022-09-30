@@ -35,7 +35,9 @@ cat("The current directory of the source script is: ", cwd)
 setwd(cwd)
 
 # Reading the big raw data matrix; this line may take some time to run!
-rawmat <- read.delim("./data/TcgaTargetGtex_RSEM_Hugo_norm_count")
+# This matrix is not included in the repo, but can be downloaded directly from 
+# https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_RSEM_Hugo_norm_count&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443
+rawmat <- read.delim("./bigdata/TcgaTargetGtex_RSEM_Hugo_norm_count")
 
 # Reading the list of "genes of interest"
 glist <- read.table("./smalldata/CompleteCTAList.txt", quote="", comment.char="")
