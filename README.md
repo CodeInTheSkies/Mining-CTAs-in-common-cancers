@@ -43,4 +43,4 @@ The analysis involves a number of data wrangling steps to clean the data and sys
 
 The code here also supports subgrouping for certain cancers such as breast cancer, where it would be beneficial to divide the cancer samples into breast cancer subtypes. To achieve subgrouping, we use clinical data columns that have subtype information as needed depending on the type of cancer being analyzed.
 
-The code is written such that we can analyze multiple cancers in a single run by specifying a list of 4-letter abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
+The code is written such that we can analyze multiple cancers in a single run by specifying a list of abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
