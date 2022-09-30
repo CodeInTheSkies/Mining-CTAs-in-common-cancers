@@ -81,6 +81,7 @@ to obtain the following two Venn diagrams:
 #### Venn diagram for Set 2
 ![Set2](/plots/VennDiagram_Set2_cancers.png)
 
-
+### To conclude ...
+Through this multi-step analysis using public data, we were able to identify a common set of CTAs that are highly expressed across a number of cancers of interest while showing little expression in normal tissues. These CTAs, shown in the above Venn diagrams, are deemed to be good candidates. Armed with this computationally generated shortlist, further lab experiements and trials can be confidently conducted to confirm these candidates and then proceed to seek clinical trials at a later stage of the research project. 
 
 
