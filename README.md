@@ -46,7 +46,7 @@ The code here also supports subgrouping for certain cancers such as breast cance
 The code is written such that we can analyze multiple cancers in a single run by specifying a list of abbreviations from the [TCGA abbreviations Table](/smalldata/tcga_abbr.txt) (see comments in the code for further details).
 
 ### Results
-We now describe some sample results, interpretations, and follow-up analyses. A large multipage PDF file containing full-sized heatmaps for a number of cancers analyzed thus far are available for download in [plots](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf).
+We now describe some sample results, interpretations, and follow-up analyses. 
 
 Here is a sample heatmap section that has the top few and the bottom few CTAs for breast cancer, with patient samples grouped by subtypes and low, mid, and high TMB groups.
 
@@ -56,4 +56,8 @@ Here is a sample heatmap section that has the top few and the bottom few CTAs fo
 A description of the elements of the plot is as follows. The heatmap has 4 main sections. The central section is the main heatmap with rows corresponding to the CTAs (genes) and columns corresponding to patient groups (normal tissues and cancer subgroups). The normal and the cancer sets are separated by a thin white space. The bottom annotation is a column-wise bar plot with each bar representing the "cohort size" or the number of patients in each group. To the right, there are two special row annotations consisting of box and whisker plots. For each gene (or CTA), these boxplots represent that gene's average expression level (log2 scale, log2(normCount+1)) within the normal cohort excluding testis (left) and the cancer cohort (right), respectively. The center line in the boxes represents the median. The testis samples are excluded from the boxplot cohort because high expression of CTAs in the testis is well known by definition, and so testis expression can be excluded to prevent unnecessary skewing of the median line towards high expression.
 
 #### Full-sized heatmap for Breast Cancer (all CTAs)
+Here is the full-sized heatmap for Breast Cancer that has all CTAs analyzed. This is the full version of the above shortened heatmap.
 ![Fullsized plot](/plots/HtMapTCGA_andNormals_CTAvsTMB_BreastCancer_Full.png)
+
+#### Full-sized heatmaps for many other cancers
+A large multipage PDF file containing full-sized heatmaps for a number of cancers analyzed thus far are available for download in [plots](/plots/HtMapTCGA_andNormals_CTAvsTMB_Combined.pdf).
